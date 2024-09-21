@@ -65,7 +65,7 @@ public class AuthController {
         user.setPassword(signUpRequest.getPassword());
         user.setName(signUpRequest.getName());
         user.setEmail(signUpRequest.getEmail());
-        user.setRole(WebSecurityConfig.ADMIN);
+        user.setRole(WebSecurityConfig.USER);
         return user;
     }
 }
