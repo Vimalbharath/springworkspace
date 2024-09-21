@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="hollywood_producer" class="com.htc.spring.beans.Producer" scope="prototype">
+        <property name="pid" value="123"/>
+        <property name="pname" value="shyam"/>
+        <property name="adress" value="america"/>    
+    </bean>
+
+    <bean id="bollywood_producer" class="com.htc.spring.beans.Producer" scope="singleton">
+        <constructor-arg name="pid" value="124"/>
+        <constructor-arg name="pname" value="ravi"/>
+        <constructor-arg name="adress" value="Mumbai"/>
+    </bean>
+
+    <bean id="movie1"  class="com.htc.spring.beans.MovieDetails">
+        <property name="mid" value="M01"/>
+        <property name="mname" value="vikram"/>
+        <property name="mbudget" value="10000"/>
+        <property name="hollywood_producer" ref="hollywood_producer"/> 
+        
+    </bean>
+
+    <bean id="movie2"  class="com.htc.spring.beans.MovieDetails">
+        <property name="mid" value="M02"/>
+        <property name="mname" value="singam"/>
+        <property name="mbudget" value="20000"/>
+         <property name="hollywood_producer" ref="hollywood_producer"/> 
+    </bean>
+
+    <bean id="movie3"  class="com.htc.spring.beans.MovieDetails">
+        <property name="mid" value="M03"/>
+        <property name="mname" value="yamudu"/>
+        <property name="mbudget" value="30000"/>
+         <property name="bollywood_producer" ref="bollywood_producer"/> 
+    </bean>
+
+</beans>

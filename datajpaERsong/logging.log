@@ -1,0 +1,6 @@
+2024-03-15 13:55:06 INFO  MusicPlayerMain:24 - HI
+2024-03-15 13:55:07 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-15 13:55:07 INFO  Version:44 - HHH000412: Hibernate ORM core version 5.5.4.Final
+2024-03-15 13:55:08 INFO  Version:56 - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-03-15 13:55:09 INFO  Dialect:175 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-03-15 13:55:11 INFO  JtaPlatformInitiator:52 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]

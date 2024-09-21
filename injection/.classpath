@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/postgresql-42.2.16.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-aop-5.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-aspects-5.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-beans-5.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-context-5.3.1.jar" sourcepath="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-context-5.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-context-support-5.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-core-5.3.1.jar" sourcepath="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-expression-5.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-expression-5.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-jdbc-5.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-jdbc-5.3.1-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-orm-5.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-tx-5.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-tx-5.3.1-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MSD/Desktop/Springboot/JAR/JAR/spring-tx-5.3.1-sources.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

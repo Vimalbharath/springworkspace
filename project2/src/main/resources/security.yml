@@ -1,0 +1,16 @@
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      
+paths:
+  /api/captain/info:
+    get:
+      security:
+        - bearerAuth: []
+      summary: Access a protected resource
+      responses:
+        '200':
+          description: Successful response
