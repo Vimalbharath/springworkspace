@@ -50,7 +50,7 @@ public class PlayerController {
       else {
             response=  "{'status': 'fail'}";
       }
-		return response;
+		return "success";
 	}
 	
 	@RequestMapping(value="/player/{playerid}",method=RequestMethod.GET)

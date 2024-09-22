@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,7 @@ import com.example.demosecurity.service.*;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("api/admin")
 public class TeamController {
 
@@ -28,7 +30,7 @@ public class TeamController {
 	TeamService teamService;
 	
 	@PostMapping(value="/team", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> addTeam(@RequestBody@Validated TeamDTO team) {
+    public String addTeam(@RequestBody@Validated TeamDTO team) {
           String response = "";
           if( teamService.addTeam(team) )
           {
@@ -45,7 +47,7 @@ public class TeamController {
           headers.add("Access-Control-Allow-Methods", "GET,PUT,DELETE,POST,OPTIONS");
           
           ResponseEntity<String> respEntity = new ResponseEntity<String>(response, headers, HttpStatus.CREATED);
-          return respEntity;
+          return response;
     }
 	
 	@GetMapping(value="/teams")
