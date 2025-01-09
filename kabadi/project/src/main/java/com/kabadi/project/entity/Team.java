@@ -91,6 +91,11 @@ public class Team {
 		this.captain = captain;
 		this.number = number;
 	}
+
+	public Team() {
+		super();
+	}
+	
 	
 	
 	

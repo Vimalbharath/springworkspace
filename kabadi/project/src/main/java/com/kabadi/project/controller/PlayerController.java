@@ -37,7 +37,7 @@ public class PlayerController {
 	
 	@PostMapping(value="/player/{teamid}", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public String addPlayer(@PathVariable(name="teamid")int teamid,
-			@RequestBody@Validated Player player) {
+			@RequestBody Player player) {
 		String response = "";
       if( playerService.addPlayer(teamid, player) )
       {

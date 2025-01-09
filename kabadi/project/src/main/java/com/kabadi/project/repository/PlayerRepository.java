@@ -14,7 +14,7 @@ public interface PlayerRepository extends CrudRepository<Player,Integer> {
 
 	int countByTeam_teamid(int teamid);
 
-	Optional<Player> findByPlayerId(Player manOfTheMatch);
+	Optional<Player> findByPlayerid(Player manOfTheMatch);
 
 	
 	

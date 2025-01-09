@@ -17,9 +17,9 @@ import jakarta.persistence.Table;
 @Table(name="player")
 public class Player {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	@Column(name="playerid")
-	private int playerId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "playerid")
+	private int playerid;
 	@Column
 	private String name;
 	@Column
@@ -35,12 +35,14 @@ public class Player {
 	@JoinColumn(name="teamid")
 	Team team;
 
-	public int getPlayerId() {
-		return playerId;
+	
+
+	public int getPlayerid() {
+		return playerid;
 	}
 
-	public void setPlayerId(int playerId) {
-		this.playerId = playerId;
+	public void setPlayerid(int playerid) {
+		this.playerid = playerid;
 	}
 
 	public String getName() {
@@ -91,10 +93,12 @@ public class Player {
 		this.team = team;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "Player [playerId=" + playerId + ", name=" + name + ", age=" + age + ", image=" + image + ", weight="
-				+ weight + ", address=" + address  + "]";
+		return "Player [playerid=" + playerid + ", name=" + name + ", age=" + age + ", image=" + image + ", weight="
+				+ weight + ", address=" + address + ", team=" + team + "]";
 	}
 
 	public Player(String name, int age, String image, int weight, String address) {
@@ -104,6 +108,10 @@ public class Player {
 		this.image = image;
 		this.weight = weight;
 		this.address = address;
+	}
+
+	public Player() {
+		super();
 	}
 
 	
