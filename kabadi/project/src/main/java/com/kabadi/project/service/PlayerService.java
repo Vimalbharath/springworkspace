@@ -45,6 +45,15 @@ public class PlayerService {
 		return null;
 	}
 	
+	public boolean deletePlayer(int id) {
+		Optional<Player> player=playerRepository.findById(id);
+		if(player.isPresent()) {
+			playerRepository.deleteById(id);
+			return true;
+		}
+		return false;
+	}
+	
 	public List<Player> getAllPlayers(){
 		return (List<Player>) playerRepository.findAll();
 	}

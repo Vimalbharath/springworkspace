@@ -1,10 +1,12 @@
 package com.kabadi.project.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kabadi.project.entity.Player;
 import com.kabadi.project.entity.Team;
 import com.kabadi.project.repository.PlayerRepository;
 import com.kabadi.project.repository.TeamRepository;
@@ -25,6 +27,21 @@ public class TeamService {
 		
 		if(teamRepository.save(team)!=null)
 			return true;
+		return false;
+	}
+	
+   public boolean deleteTeam(int teamid) {
+		
+	   Optional<Team> team=teamRepository.findById(teamid);
+		if(team.isPresent()) {
+			if(playerRepository.countByTeam_teamid(teamid)==0) {
+			teamRepository.deleteById(teamid);
+			return true;
+			}
+			else {
+				return false;
+			}
+		}
 		return false;
 	}
 	

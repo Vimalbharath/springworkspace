@@ -94,6 +94,21 @@ public class PlayerController {
 		return players;
 	}
 	
+	@RequestMapping(value="/deleteplayer/{playerid}",method=RequestMethod.DELETE)
+	public ResponseEntity<Player> deletePlayer(@PathVariable(name="playerid")int playerid) {
+		boolean emp=playerService.deletePlayer(playerid);
+		HttpHeaders headers = new HttpHeaders();
+		ResponseEntity<Player> respEntity;
+		
+		if( emp!=false )
+        {
+			 respEntity = new ResponseEntity<Player>(HttpStatus.OK);
+        }
+        else {
+             respEntity = new ResponseEntity<Player>( HttpStatus.NOT_FOUND);
+        }
+		return respEntity;
+	}
 	
 	
 	

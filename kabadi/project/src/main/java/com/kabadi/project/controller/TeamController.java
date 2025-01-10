@@ -10,11 +10,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kabadi.project.entity.Player;
 import com.kabadi.project.entity.Team;
 import com.kabadi.project.service.TeamService;
 
@@ -52,5 +55,21 @@ public class TeamController {
 		List<Team> teams=teamService.getAllTeams(); 
 		System.out.println(teams);
 		return teams;
+	}
+	
+	@RequestMapping(value="/deleteteam/{teamid}",method=RequestMethod.DELETE)
+	public ResponseEntity<Team> deleteTeam(@PathVariable(name="teamid")int teamid) {
+		boolean emp=teamService.deleteTeam(teamid);
+		HttpHeaders headers = new HttpHeaders();
+		ResponseEntity<Team> respEntity;
+		
+		if( emp!=false )
+        {
+			 respEntity = new ResponseEntity<Team>(HttpStatus.OK);
+        }
+        else {
+             respEntity = new ResponseEntity<Team>( HttpStatus.NOT_FOUND);
+        }
+		return respEntity;
 	}
 }

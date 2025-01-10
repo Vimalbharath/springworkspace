@@ -81,7 +81,7 @@ public class Team {
 	@Override
 	public String toString() {
 		return "Team [teamid=" + teamid + ", name=" + name + ", village=" + village + ", captain=" + captain
-				+ ", number=" + number + ", players=" + players + "]";
+				+ ", number=" + number + "]";
 	}
 
 	public Team(String name, String village, String captain, String number) {
