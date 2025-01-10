@@ -53,6 +53,30 @@ public class PlayerService {
 		}
 		return false;
 	}
+	public boolean updatePlayer(int playerid,Player player,int teamid) {
+		
+		   Optional<Player> optplayer=playerRepository.findById(playerid);
+		   
+		   
+			if(optplayer.isPresent()) {
+				Player oldplayer=optplayer.get();
+				
+				Optional<Team> optteam=teamRepository.findById(teamid);
+				Team oldteam=optteam.get();
+				oldplayer.setAge(player.getAge());
+				oldplayer.setName(player.getName());
+				oldplayer.setAddress(player.getAddress());
+				oldplayer.setWeight(player.getWeight());
+				oldplayer.setImage(player.getImage());
+				//int teamid=oldplayer.getTeam().getTeamid();
+				oldplayer.setTeam(oldteam);
+				
+				if(playerRepository.save(oldplayer)!=null)
+					return true;
+				
+			}
+			return false;
+		}
 	
 	public List<Player> getAllPlayers(){
 		return (List<Player>) playerRepository.findAll();

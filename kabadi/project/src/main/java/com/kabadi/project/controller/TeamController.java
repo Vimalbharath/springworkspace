@@ -50,6 +50,22 @@ public class TeamController {
           return response;
     }
 	
+	@RequestMapping(value="/updateteam/{teamid}",consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,method=RequestMethod.PUT)
+	public ResponseEntity<Team> updateTeam(@PathVariable(name="teamid")int teamid,@RequestBody Team team) {
+		boolean emp=teamService.updateTeam(teamid,team);
+		HttpHeaders headers = new HttpHeaders();
+		ResponseEntity<Team> respEntity;
+		
+		if( emp!=false )
+        {
+			 respEntity = new ResponseEntity<Team>(HttpStatus.OK);
+        }
+        else {
+             respEntity = new ResponseEntity<Team>( HttpStatus.NOT_FOUND);
+        }
+		return respEntity;
+	}
+	
 	@GetMapping(value="/teams")
 	public List<Team> getAllTeams(){
 		List<Team> teams=teamService.getAllTeams(); 

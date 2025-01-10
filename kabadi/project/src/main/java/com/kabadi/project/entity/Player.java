@@ -109,11 +109,22 @@ public class Player {
 		this.weight = weight;
 		this.address = address;
 	}
+	
+
+	public Player(String name, int age, String image, int weight, String address, Team team) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.image = image;
+		this.weight = weight;
+		this.address = address;
+		this.team = team;
+	}
 
 	public Player() {
 		super();
 	}
-
+	
 	
 	
 }

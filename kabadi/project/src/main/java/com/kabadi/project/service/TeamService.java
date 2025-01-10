@@ -30,6 +30,23 @@ public class TeamService {
 		return false;
 	}
 	
+	public boolean updateTeam(int teamid,Team team) {
+		
+		   Optional<Team> optteam=teamRepository.findById(teamid);
+			if(optteam.isPresent()) {
+				Team oldteam=optteam.get();
+				oldteam.setCaptain(team.getCaptain());
+				oldteam.setName(team.getName());
+				oldteam.setNumber(team.getNumber());
+				oldteam.setVillage(team.getVillage());
+				
+				if(teamRepository.save(oldteam)!=null)
+					return true;
+				
+			}
+			return false;
+		}
+	
    public boolean deleteTeam(int teamid) {
 		
 	   Optional<Team> team=teamRepository.findById(teamid);

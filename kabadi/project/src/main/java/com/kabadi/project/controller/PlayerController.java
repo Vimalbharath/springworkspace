@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kabadi.project.entity.Player;
+import com.kabadi.project.entity.Team;
 import com.kabadi.project.service.PlayerService;
 
 
@@ -109,7 +110,21 @@ public class PlayerController {
         }
 		return respEntity;
 	}
-	
+	@RequestMapping(value="/updateplayer/{playerid}/{teamid}",consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,method=RequestMethod.PUT)
+	public ResponseEntity<Player> updateTeam(@PathVariable(name="playerid")int playerid,@RequestBody Player player,@PathVariable(name="teamid")int teamid) {
+		boolean emp=playerService.updatePlayer(playerid,player,teamid);
+		HttpHeaders headers = new HttpHeaders();
+		ResponseEntity<Player> respEntity;
+		
+		if( emp!=false )
+        {
+			 respEntity = new ResponseEntity<Player>(HttpStatus.OK);
+        }
+        else {
+             respEntity = new ResponseEntity<Player>( HttpStatus.NOT_FOUND);
+        }
+		return respEntity;
+	}
 	
 	
 	
