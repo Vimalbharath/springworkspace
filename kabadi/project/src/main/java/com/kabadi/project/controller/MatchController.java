@@ -1,7 +1,7 @@
 package com.kabadi.project.controller;
 import java.util.Collection;
 import java.util.List;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -24,6 +24,7 @@ import com.kabadi.project.service.*;
 
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class MatchController {
 	
 	@Autowired
