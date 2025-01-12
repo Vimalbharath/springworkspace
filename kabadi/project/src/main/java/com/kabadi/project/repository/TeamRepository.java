@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.kabadi.project.entity.Player;
 import com.kabadi.project.entity.Team;
 
 
@@ -13,7 +14,7 @@ import com.kabadi.project.entity.Team;
 public interface TeamRepository extends CrudRepository<Team,Integer> {
 
 	Optional<Team> findByTeamid(Team winner);
-	
+	Optional<Team> findByTeamid(int teamid);
 	
 	
 }

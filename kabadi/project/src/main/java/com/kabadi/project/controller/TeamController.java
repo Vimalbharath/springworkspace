@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kabadi.project.entity.Match;
 import com.kabadi.project.entity.Player;
 import com.kabadi.project.entity.Team;
 import com.kabadi.project.service.TeamService;
@@ -88,4 +89,11 @@ public class TeamController {
         }
 		return respEntity;
 	}
+	@GetMapping(value="/team/{teamid}")
+	public Team getSingleTeam(@PathVariable(name="teamid")int teamid){
+		Team matchs=teamService.getTeamById(teamid);
+		System.out.println(matchs);
+		return matchs;
+	}
 }
+

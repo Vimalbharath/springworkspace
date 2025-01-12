@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kabadi.project.entity.Match;
 import com.kabadi.project.entity.Player;
 import com.kabadi.project.entity.Team;
 import com.kabadi.project.repository.PlayerRepository;
@@ -64,5 +65,11 @@ public class TeamService {
 	
 	 public List<Team> getAllTeams(){
 			return (List<Team>) teamRepository.findAll();
+		}
+	 public Team getTeamById(int teamid) {
+			Optional<Team> team=teamRepository.findByTeamid(teamid);
+			if(team.isPresent())
+				return team.get();
+			return null;
 		}
 }
