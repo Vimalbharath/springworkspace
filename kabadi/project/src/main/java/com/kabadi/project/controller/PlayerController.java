@@ -126,6 +126,21 @@ public class PlayerController {
         }
 		return respEntity;
 	}
+	@RequestMapping(value="/updateimage/{playerid}",consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,method=RequestMethod.PUT)
+	public ResponseEntity<Player> updateImage(@PathVariable(name="playerid")int playerid) {
+		boolean emp=playerService.updateImage(playerid);
+		HttpHeaders headers = new HttpHeaders();
+		ResponseEntity<Player> respEntity;
+		
+		if( emp!=false )
+        {
+			 respEntity = new ResponseEntity<Player>(HttpStatus.OK);
+        }
+        else {
+             respEntity = new ResponseEntity<Player>( HttpStatus.NOT_FOUND);
+        }
+		return respEntity;
+	}
 	
 	
 	

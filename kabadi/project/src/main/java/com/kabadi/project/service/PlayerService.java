@@ -77,6 +77,20 @@ public class PlayerService {
 			}
 			return false;
 		}
+	public boolean updateImage(int playerid) {
+		   String img=String.valueOf(playerid);
+		   Optional<Player> optplayer=playerRepository.findById(playerid);
+		   
+		   
+			if(optplayer.isPresent()) {
+				Player oldplayer=optplayer.get();
+				oldplayer.setImage(img);
+				if(playerRepository.save(oldplayer)!=null)
+					return true;
+				
+			}
+			return false;
+		}
 	
 	public List<Player> getAllPlayers(){
 		return (List<Player>) playerRepository.findAll();
