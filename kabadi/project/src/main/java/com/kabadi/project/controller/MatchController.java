@@ -24,6 +24,7 @@ import com.kabadi.project.service.*;
 
 
 @RestController
+@RequestMapping("/admin")
 @CrossOrigin(origins = "http://localhost:3000")
 public class MatchController {
 	

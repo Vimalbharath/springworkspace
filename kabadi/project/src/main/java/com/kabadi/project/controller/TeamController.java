@@ -25,6 +25,7 @@ import com.kabadi.project.service.TeamService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/admin")
 public class TeamController {
 
 	@Autowired
