@@ -24,6 +24,7 @@ import com.kabadi.project.service.PlayerService;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/admin")
 public class PlayerController {
 	
 	@Autowired
