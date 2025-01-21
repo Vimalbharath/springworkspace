@@ -29,21 +29,21 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/admin")
 public class PlayerController {
 	
 	@Autowired
 	PlayerService playerService;
 	
-	@RequestMapping(value="/info",method=RequestMethod.GET)
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@RequestMapping(value="/admin/info",method=RequestMethod.GET)
 	public String info() {
 		return "{'msg':'Welcome to Springboot'}";
 	}
 	
 
 	
-	
-	@PostMapping(value="/player/{teamid}", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@PostMapping(value="/admin/player/{teamid}", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public String addPlayer(@PathVariable(name="teamid")int teamid,
 			@RequestBody Player player) {
 		String response = "";
@@ -57,7 +57,8 @@ public class PlayerController {
 		return "success";
 	}
 	
-	@RequestMapping(value="/player/{playerid}",method=RequestMethod.GET)
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@RequestMapping(value="/admin/player/{playerid}",method=RequestMethod.GET)
 	public ResponseEntity<Player> getPlayerById(@PathVariable(name="playerid")int playerid) {
 		Player emp=playerService.getPlayerById(playerid);
 		HttpHeaders headers = new HttpHeaders();
@@ -72,7 +73,9 @@ public class PlayerController {
         }
 		return respEntity;
 	}
-	@RequestMapping(value="/noofplayersofteam/{teamid}",method=RequestMethod.GET)
+	
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@RequestMapping(value="/admin/noofplayersofteam/{teamid}",method=RequestMethod.GET)
 	public ResponseEntity<Integer> countByTeam_TeamId(@PathVariable(name="teamid")int teamid) {
 		int count=playerService.countPlayersInTeam(teamid);
 		HttpHeaders headers = new HttpHeaders();
@@ -87,22 +90,25 @@ public class PlayerController {
         }
 		return respEntity;
 	}
-	 
-	@GetMapping(value="/players/{playerid}")
+	
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@GetMapping(value="/admin/players/{playerid}")
 	public Player getPlayerById2(@PathVariable(name="playerid")int playerid){
 		Player players=playerService.getPlayerById(playerid);
 		System.out.println(players);
 		return players;
 	}
+	
 	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
-	@GetMapping(value="/players")
+	@GetMapping(value="/public/players")
 	public List<Player> getAllPlayers(){
 		List<Player> players=playerService.getAllPlayers();
 		System.out.println(players);
 		return players;
 	}
 	
-	@RequestMapping(value="/deleteplayer/{playerid}",method=RequestMethod.DELETE)
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@RequestMapping(value="/admin/deleteplayer/{playerid}",method=RequestMethod.DELETE)
 	public ResponseEntity<Player> deletePlayer(@PathVariable(name="playerid")int playerid) {
 		boolean emp=playerService.deletePlayer(playerid);
 		HttpHeaders headers = new HttpHeaders();
@@ -117,7 +123,9 @@ public class PlayerController {
         }
 		return respEntity;
 	}
-	@RequestMapping(value="/updateplayer/{playerid}/{teamid}",consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,method=RequestMethod.PUT)
+	
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@RequestMapping(value="/admin/updateplayer/{playerid}/{teamid}",consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,method=RequestMethod.PUT)
 	public ResponseEntity<Player> updateTeam(@PathVariable(name="playerid")int playerid,@RequestBody Player player,@PathVariable(name="teamid")int teamid) {
 		boolean emp=playerService.updatePlayer(playerid,player,teamid);
 		HttpHeaders headers = new HttpHeaders();
@@ -132,7 +140,9 @@ public class PlayerController {
         }
 		return respEntity;
 	}
-	@RequestMapping(value="/updateimage/{playerid}",consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,method=RequestMethod.PUT)
+	
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@RequestMapping(value="/admin/updateimage/{playerid}",consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,method=RequestMethod.PUT)
 	public ResponseEntity<Player> updateImage(@PathVariable(name="playerid")int playerid) {
 		boolean emp=playerService.updateImage(playerid);
 		HttpHeaders headers = new HttpHeaders();

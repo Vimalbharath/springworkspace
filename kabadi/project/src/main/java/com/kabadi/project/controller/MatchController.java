@@ -29,7 +29,6 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
-@RequestMapping("/admin")
 @CrossOrigin(origins = "http://localhost:3000")
 public class MatchController {
 	
@@ -40,8 +39,8 @@ public class MatchController {
 	
 
 	
-	
-	@PostMapping(value="/match/{team1id}/{team2id}", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@PostMapping(value="/admin/match/{team1id}/{team2id}", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
 	public String addMatch(@PathVariable(name="team1id")int team1id,@PathVariable(name="team2id")int team2id,
 			@RequestBody Match match) {
 		String response = "";
@@ -55,7 +54,8 @@ public class MatchController {
 		return response;
 	}
 	
-	@RequestMapping(value="/match/{matchid}",method=RequestMethod.GET)
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@RequestMapping(value="/admin/match/{matchid}",method=RequestMethod.GET)
 	public ResponseEntity<Match> getMatchById(@PathVariable(name="matchid")int matchid) {
 		Match emp=matchService.getMatchById(matchid);
 		HttpHeaders headers = new HttpHeaders();
@@ -71,14 +71,15 @@ public class MatchController {
 		return respEntity;
 	}
 	 
-	@GetMapping(value="/matchs/{matchid}")
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@GetMapping(value="/admin/matchs/{matchid}")
 	public Match getMatchById2(@PathVariable(name="matchid")int matchid){
 		Match matchs=matchService.getMatchById(matchid);
 		System.out.println(matchs);
 		return matchs;
 	}
 	
-	@GetMapping(value="/matchs")
+	@GetMapping(value="/public/matchs")
 	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
 	public List<Match> getAllMatchs(){
 		List<Match> matchs=matchService.getAllMatchs();
@@ -86,7 +87,8 @@ public class MatchController {
 		return matchs;
 	}
 	
-	@RequestMapping(value="/deletematch/{matchid}",method=RequestMethod.DELETE)
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@RequestMapping(value="/admin/deletematch/{matchid}",method=RequestMethod.DELETE)
 	public ResponseEntity<Player> deleteMatch(@PathVariable(name="matchid")int matchid) {
 		boolean emp=matchService.deleteMatch(matchid);
 		HttpHeaders headers = new HttpHeaders();
@@ -102,7 +104,8 @@ public class MatchController {
 		return respEntity;
 	}
 	
-	@RequestMapping(value="/updatematch/{matchid}",consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,method=RequestMethod.PUT)
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@RequestMapping(value="/admin/updatematch/{matchid}",consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,method=RequestMethod.PUT)
 	public ResponseEntity<Player> updateMatch(@PathVariable(name="matchid")int matchid,@RequestBody Match match) {
 		boolean emp=matchService.updateMatch(matchid,match);
 		HttpHeaders headers = new HttpHeaders();

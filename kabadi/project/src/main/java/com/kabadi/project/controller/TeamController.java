@@ -30,13 +30,14 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/admin")
+
 public class TeamController {
 
 	@Autowired
 	TeamService teamService;
 	
-	@PostMapping(value="/team", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@PostMapping(value="/admin/team", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
     public String addTeam(@RequestBody Team team) {
           String response = "";
           if( teamService.addTeam(team) )
@@ -57,7 +58,8 @@ public class TeamController {
           return response;
     }
 	
-	@RequestMapping(value="/updateteam/{teamid}",consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,method=RequestMethod.PUT)
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@RequestMapping(value="/admin/updateteam/{teamid}",consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE,method=RequestMethod.PUT)
 	public ResponseEntity<Team> updateTeam(@PathVariable(name="teamid")int teamid,@RequestBody Team team) {
 		boolean emp=teamService.updateTeam(teamid,team);
 		HttpHeaders headers = new HttpHeaders();
@@ -73,7 +75,8 @@ public class TeamController {
 		return respEntity;
 	}
 	
-	@GetMapping(value="/teams")
+	
+	@GetMapping(value="/public/teams")
 	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
 	public List<Team> getAllTeams(){
 		List<Team> teams=teamService.getAllTeams(); 
@@ -81,7 +84,8 @@ public class TeamController {
 		return teams;
 	}
 	
-	@RequestMapping(value="/deleteteam/{teamid}",method=RequestMethod.DELETE)
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@RequestMapping(value="/admin/deleteteam/{teamid}",method=RequestMethod.DELETE)
 	public ResponseEntity<Team> deleteTeam(@PathVariable(name="teamid")int teamid) {
 		boolean emp=teamService.deleteTeam(teamid);
 		HttpHeaders headers = new HttpHeaders();
@@ -96,7 +100,9 @@ public class TeamController {
         }
 		return respEntity;
 	}
-	@GetMapping(value="/team/{teamid}")
+	
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@GetMapping(value="/public/team/{teamid}")
 	public Team getSingleTeam(@PathVariable(name="teamid")int teamid){
 		Team matchs=teamService.getTeamById(teamid);
 		System.out.println(matchs);
