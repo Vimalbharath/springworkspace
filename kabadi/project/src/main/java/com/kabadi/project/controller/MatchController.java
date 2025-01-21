@@ -1,4 +1,6 @@
 package com.kabadi.project.controller;
+import static com.kabadi.project.config.SwaggerConfig.BASIC_AUTH_SECURITY_SCHEME;
+
 import java.util.Collection;
 import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,6 +23,9 @@ import com.kabadi.project.entity.*;
 import com.kabadi.project.repository.*;
 
 import com.kabadi.project.service.*;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
@@ -74,6 +79,7 @@ public class MatchController {
 	}
 	
 	@GetMapping(value="/matchs")
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
 	public List<Match> getAllMatchs(){
 		List<Match> matchs=matchService.getAllMatchs();
 		System.out.println(matchs);

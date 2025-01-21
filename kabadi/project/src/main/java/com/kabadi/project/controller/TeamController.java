@@ -1,5 +1,7 @@
 package com.kabadi.project.controller;
 
+import static com.kabadi.project.config.SwaggerConfig.BASIC_AUTH_SECURITY_SCHEME;
+
 import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ import com.kabadi.project.entity.Match;
 import com.kabadi.project.entity.Player;
 import com.kabadi.project.entity.Team;
 import com.kabadi.project.service.TeamService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 
 @RestController
@@ -69,6 +74,7 @@ public class TeamController {
 	}
 	
 	@GetMapping(value="/teams")
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
 	public List<Team> getAllTeams(){
 		List<Team> teams=teamService.getAllTeams(); 
 		System.out.println(teams);

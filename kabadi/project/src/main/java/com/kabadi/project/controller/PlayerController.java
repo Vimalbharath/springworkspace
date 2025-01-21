@@ -94,7 +94,7 @@ public class PlayerController {
 		System.out.println(players);
 		return players;
 	}
-	 @Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
+	@Operation(security = {@SecurityRequirement(name = BASIC_AUTH_SECURITY_SCHEME)})
 	@GetMapping(value="/players")
 	public List<Player> getAllPlayers(){
 		List<Player> players=playerService.getAllPlayers();
